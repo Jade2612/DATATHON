@@ -1,0 +1,20 @@
+CỘT REVENUE TRONG BẢNG SALES
+           Date      Revenue  is_promo
+2156 2018-05-30  20905271.35     False
+2157 2018-05-31  19289944.12     False
+2158 2018-06-01  19245165.78     False
+1793 2017-06-01  17639270.88     False
+2159 2018-06-02  17529108.34     False
+1794 2017-06-02  17528852.88     False
+1730 2017-03-30  17516038.82      True
+1394 2016-04-28  17388183.19     False
+664  2014-04-29  17347427.27     False
+1792 2017-05-31  17314841.86     False
+
+Nhìn vào các mốc ngày sẽ thấy một điểm chung rất rõ rệt:
+1. Sát ngày 30/4 - 1/5
+2. Sát ngày 1/6 
+Có thể doanh nghiệp không chạy chiến dịch promo_id cụ thể, 
+nhưng nhu cầu tự nhiên của thị trường vào các dịp lễ này vẫn tạo ra Outliers.
+Giải pháp: 
+Tạo cột is_holiday để đánh dấu những ngày cận lễ (+- 3 ngày), phục vụ cho việc train model
