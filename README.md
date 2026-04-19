@@ -6,6 +6,7 @@ Cấu trúc thư mục
 │   ├── raw/                 # Chứa nguyên bản 15 file CSV vừa tải về. KHÔNG sửa trực tiếp các file này.
 │   └── processed/           # Chứa các file dữ liệu đã qua xử lý (merge, clean) để load nhanh hơn.
 ├── notebooks/
+│   ├── 00_data_cleaning.ipynb
 │   ├── 01_mcq_calculations.ipynb # Code tính toán để trả lời 10 câu hỏi Phần 1.
 │   ├── 02_eda_and_storytelling.ipynb # Code vẽ biểu đồ, phân tích 4 cấp độ (Descriptive đến Prescriptive) cho Phần 2.
 │   └── 03_sales_forecasting.ipynb # Code huấn luyện mô hình dự báo Revenue và vẽ biểu đồ giải thích (SHAP) cho Phần 3.
