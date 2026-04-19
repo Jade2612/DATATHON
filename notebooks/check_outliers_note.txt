@@ -18,3 +18,9 @@ Có thể doanh nghiệp không chạy chiến dịch promo_id cụ thể,
 nhưng nhu cầu tự nhiên của thị trường vào các dịp lễ này vẫn tạo ra Outliers.
 Giải pháp: 
 Tạo cột is_holiday để đánh dấu những ngày cận lễ (+- 3 ngày), phục vụ cho việc train model
+
+CỘT COGS TRONG BẢNG SALES
+Dữ liệu hoàn toàn bình thường nên
+Không loại bỏ Outliers vì chúng đại diện cho các sự kiện kinh doanh thực tế (Holiday/Payday).
+Sử dụng Log Transformation để xử lý phương sai thay đổi (Heteroscedasticity) và ổn định hóa quá trình huấn luyện mô hình.
+
