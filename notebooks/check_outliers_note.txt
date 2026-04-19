@@ -1,0 +1,61 @@
+CỘT REVENUE TRONG BẢNG SALES
+           Date      Revenue  is_promo
+2156 2018-05-30  20905271.35     False
+2157 2018-05-31  19289944.12     False
+2158 2018-06-01  19245165.78     False
+1793 2017-06-01  17639270.88     False
+2159 2018-06-02  17529108.34     False
+1794 2017-06-02  17528852.88     False
+1730 2017-03-30  17516038.82      True
+1394 2016-04-28  17388183.19     False
+664  2014-04-29  17347427.27     False
+1792 2017-05-31  17314841.86     False
+
+Nhìn vào các mốc ngày sẽ thấy một điểm chung rất rõ rệt:
+1. Sát ngày 30/4 - 1/5
+2. Sát ngày 1/6 
+Có thể doanh nghiệp không chạy chiến dịch promo_id cụ thể, 
+nhưng nhu cầu tự nhiên của thị trường vào các dịp lễ này vẫn tạo ra Outliers.
+Giải pháp: 
+Tạo cột is_holiday để đánh dấu những ngày cận lễ (+- 3 ngày), phục vụ cho việc train model
+
+CỘT COGS TRONG BẢNG SALES
+Dữ liệu hoàn toàn bình thường nên
+Không loại bỏ Outliers vì chúng đại diện cho các sự kiện kinh doanh thực tế (Holiday/Payday).
+Sử dụng Log Transformation để xử lý phương sai thay đổi (Heteroscedasticity) 
+và ổn định hóa quá trình huấn luyện mô hình.
+
+CỘT PRICE VÀ COGS TRONG PRODUCTS
+
+product_id	segment	price	cogs	gross_margin
+699	334	Performance	25196.850000	23937.007500	0.0500
+863	507	Balanced	24574.291875	23345.577281	0.0500
+712	347	Performance	40950.000000	38902.500000	0.0500
+552	1776	Performance	17639.370000	16157.662920	0.0840
+1451	394	Premium	19686.870000	17464.222377	0.1129
+1462	806	Premium	13293.000000	11389.442400	0.1432
+313	1902	Everyday	19529.370000	16287.494580	0.1660
+818	462	Balanced	24321.979756	20085.090883	0.1742
+674	309	Performance	40950.000000	30319.380000	0.2596
+718	353	Performance	20786.850000	15267.941325	0.2655
+703	338	Performance	17636.850000	11541.554640	0.3456
+702	337	Performance	18896.850000	11857.773375	0.3725
+670	305	Performance	18589.783333	11094.382693	0.4032
+661	296	Performance	27716.850000	14598.464895	0.4733
+427	519	Performance	19526.850000	9948.930075	0.4905
+
+Qua kiểm tra chéo, 100% các sản phẩm có giá bán đột biến (Price Outliers) vẫn tuân thủ ràng buộc COGS < Price.
+Tuy nhiên, phát hiện một nhóm 3 sản phẩm định vị ở phân khúc đắt tiền (Performance, Balanced) 
+nhưng lại có tỷ suất lợi nhuận gộp bị "ép" ở mức cố định rất thấp (đúng 5%).
+Kết luận: Đây không phải là lỗi nhập liệu mà là hệ quả của các chiến lược định giá đặc biệt 
+(như thanh lý xả hàng hoặc sản phẩm chim mồi). 
+Giữ nguyên toàn bộ các bản ghi này để đảm bảo tính toàn vẹn khi tính toán tổng doanh thu.
+
+CÁC CỘT sessions, page_views, avg_session_duration_sec TRONG WEB_TRAFFIC
+Đây là dấu hiệu của các Mega Campaign (Chiến dịch siêu sale), các đợt Flash Sale, 
+hoặc website có tổ chức Minigame/Săn mã giảm giá. 
+Khách hàng vào web, liên tục click chuyển trang để tìm deal hời (dẫn đến Page Views tăng vọt) 
+và không ai muốn thoát ra (Bounce Rate tiệm cận 0).
+=> Không thay đổi gì 
+
+CỘT QUANTITY TRONG ORDER_ITEMS: Không có vấn đề gì
