@@ -1,6 +1,7 @@
 # DATATHON
 Datathon VinUni 2026
 Cấu trúc thư mục  
+```
 ├── data/
 │   ├── raw/                 # Chứa nguyên bản 15 file CSV vừa tải về. KHÔNG sửa trực tiếp các file này.
 │   └── processed/           # Chứa các file dữ liệu đã qua xử lý (merge, clean) để load nhanh hơn.
@@ -18,3 +19,4 @@ Cấu trúc thư mục
 │   └── final_submission.csv # File nộp chính thức lên hệ thống Kaggle.
 ├── README.md                # BẮT BUỘC: Mô tả cấu trúc thư mục và hướng dẫn chạy code.
 └── requirements.txt         # File khai báo các thư viện môi trường để đảm bảo tính tái lập.
+```
