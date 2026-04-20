@@ -46,7 +46,7 @@ product_id	segment	price	cogs	gross_margin
 
 Qua kiểm tra chéo, 100% các sản phẩm có giá bán đột biến (Price Outliers) vẫn tuân thủ ràng buộc COGS < Price.
 Tuy nhiên, phát hiện một nhóm 3 sản phẩm định vị ở phân khúc đắt tiền (Performance, Balanced) 
-nhưng lại có tỷ suất lợi nhuận gộp bị "ép" ở mức cố định rất thấp (đúng 5%).
+nhưng lại có tỷ suất lợi nhuận gộp bị ép ở mức cố định rất thấp (đúng 5%).
 Kết luận: Đây không phải là lỗi nhập liệu mà là hệ quả của các chiến lược định giá đặc biệt 
 (như thanh lý xả hàng hoặc sản phẩm chim mồi). 
 Giữ nguyên toàn bộ các bản ghi này để đảm bảo tính toàn vẹn khi tính toán tổng doanh thu.
