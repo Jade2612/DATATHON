@@ -10,3 +10,4 @@ v3.1,Ensemble 3 Models (best),522158.78,733193.98,0.7918,458003.15,661983.17,0.7
 v3.2,Ensemble 3 Models (add holidays prophet),522328.64,742433.60,0.7865,459106.16,665123.21,0.7705,,Ensemble (3 Models: XGB + LGB + Prophet) with Optuna-tuned weights and Prophet with holidays
 v3.3,Ensemble 3 Models (drop holidays prophet: RMSE - MAE),521488.57,739163.21,0.7884,458587.41,663467.25,0.7717,,Ensemble (3 Models: XGB + LGB + Prophet) with Optuna-tuned weights and drop Prophet holidays
 v3.4,Ensemble 3 Models (drop holidays prophet: MAE - RMSE),520058.97,737588.70,0.7893,458320.47,661915.49,0.7727,,Ensemble (3 Models: XGB + LGB + Prophet) with Optuna-tuned weights
+v3.5,Ensemble 3 Models (optimized from file py),520088.49,737371.31,0.7894,458183.30,662378.25,0.7724,2292313.05015,
