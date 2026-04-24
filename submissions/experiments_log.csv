@@ -1,0 +1,2 @@
+Version,Model,MAE_Rev,RMSE_Rev, R^2_Rev,MAE_COGS,RMSE_COGS,R^2_COGS,Kaggle_Score,Note
+v1,XGBoost,9895.31,19130.56,0.9999,7505.91,10516.94,0.9999,,

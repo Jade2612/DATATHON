@@ -17,6 +17,7 @@ Cấu trúc thư mục
 │   └── figures/             # Thư mục lưu các biểu đồ xuất ra từ file notebook để chèn vào báo cáo.
 ├── submissions/
 │   ├── submission_v1.csv    # Các version file nộp thử nghiệm.
+│   ├── experiments_log.csv  # Lịch sử nộp bài và các thông số
 │   └── final_submission.csv # File nộp chính thức lên hệ thống Kaggle.
 ├── README.md                # BẮT BUỘC: Mô tả cấu trúc thư mục và hướng dẫn chạy code.
 └── requirements.txt         # File khai báo các thư viện môi trường để đảm bảo tính tái lập.
