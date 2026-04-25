@@ -12,5 +12,5 @@ v3.3,Ensemble 3 Models (drop holidays prophet: RMSE - MAE),521488.57,739163.21,0
 v3.4,Ensemble 3 Models (drop holidays prophet: MAE - RMSE),520058.97,737588.70,0.7893,458320.47,661915.49,0.7727,,Ensemble (3 Models: XGB + LGB + Prophet) with Optuna-tuned weights
 v3.5,Ensemble 3 Models (optimized from file py),520088.49,737371.31,0.7894,458183.30,662378.25,0.7724,2292313.05015,
 v2,3 Models,523256.11,741746.48,0.7869,462385.30,664996.33,0.7706,2124724.77634,COGS: 0.65/0.25/0.10 - Rev: 0.35/0.55/0.10
-
 v4,Claude Code fix,746978,1084856,0.8333,661510,956909,0.8183,1458894.67623,
+v5,"Recursive Forecasting, Ensemble in OOF, Best Iteration",,,,,,,968332.22487,
