@@ -14,3 +14,5 @@ v3.5,Ensemble 3 Models (optimized from file py),520088.49,737371.31,0.7894,45818
 v2,3 Models,523256.11,741746.48,0.7869,462385.30,664996.33,0.7706,2124724.77634,COGS: 0.65/0.25/0.10 - Rev: 0.35/0.55/0.10
 v4,Claude Code fix,746978,1084856,0.8333,661510,956909,0.8183,1458894.67623,
 v5,"Recursive Forecasting, Ensemble in OOF, Best Iteration",,,,,,,968332.22487,
+v6,"Toi u theo so do duong du bao",,,,,,,933412.90305,
+nhits_futr_blend,N-HiTS,,,,,,,935305.41706,
