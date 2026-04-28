@@ -59,3 +59,12 @@ và không ai muốn thoát ra (Bounce Rate tiệm cận 0).
 => Không thay đổi gì 
 
 CỘT QUANTITY TRONG ORDER_ITEMS: Không có vấn đề gì
+
+
+VẤN ĐỀ TỪ BIỂU ĐỒ SHAP:
+1. Đặc trưng rev_lag_1 (doanh thu của 1 ngày trước đó) có mức độ ảnh hưởng (SHAP value) 
+vượt trội hoàn toàn so với phần còn lại (tác động trung bình lên tới ~832,793).
+2. Các đặc trưng cogs_lag_365 và rev_lag_365 cũng đóng vai trò quan trọng thứ 2 và thứ 5. 
+Điều này tái khẳng định tính chất chu kỳ năm cực mạnh của dữ liệu.
+3. Các độ trễ như cogs_lag_1, rev_lag_7, rev_lag_14, rev_lag_28 đều nằm trong 
+top đầu các biến quan trọng nhất.
