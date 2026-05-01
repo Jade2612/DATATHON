@@ -1,5 +1,5 @@
 \documentclass{article} 
-\usepackage{neurips_2025}
+\usepackage[final]{neurips_2025}
 \usepackage[utf8]{inputenc}
 \usepackage[vietnamese]{babel} 
 \usepackage[T1]{fontenc}
@@ -100,16 +100,9 @@ Dự báo nhu cầu chính xác là yếu tố then chốt để tối ưu hóa 
 \vspace{12pt}
 
 \begin{multicols}{2}
-
-\section{Giới thiệu}
-
 \section{Trực quan hoá và Phân tích EDA}
 
 \subsection{Vấn đề trả hàng không đến từ chất lượng sản phẩm mà là sizing}
-
-
-Tổng số đơn return khoảng 25.800 đơn và 109.000 sản phẩm với doanh thu mất từ các đơn này là 650M đồng(4.15\% tổng doanh thu). Trong đó danh mục streetwear là danh mục bị trả về nhiều nhất, ảnh hưởng đáng kể đến doanh thu, với 21799 đơn return đã gây ra tổn thất đến 474.9M đồng(79,9\% tổng tổn thất) với size bị trả về nhiều nhất là XL với 16,7\%. Wrong size chiếm khoảng 35\% cho hầu như đồng đều các danh mục sản phẩm và đây là lí do trả về chiếm tỉ trọng cao nhất, cứ 100 đơn đặt hàng thì 1.2-1.3 đơn bị hoàn vì wrong size tùy danh mục. Vấn đề wrong size cũng là tình trạng chung xảy ra ở hầu hết các thành phố, từ những điều này cho thấy vấn đề không xuất phát từ một nhóm sản phẩm cụ thể hay một khu vực cụ thể mà là một vấn đề mang tính hệ thống, có thể do nhiều nguyên nhân như size guide chưa tốt, sản phẩm chưa đúng các thông số kĩ thuật hoặc nằm ở khách hàng chọn sai size, cần thêm data về feedback khách hàng để xác định nguyên nhân chính xác. Tỉ lệ này sẽ không cải thiện nếu không có thay đổi về trải nghiệm chọn size.
-
 \begin{center}
     \begin{minipage}{\linewidth} 
         \centering
@@ -165,25 +158,191 @@ Tổng số đơn return khoảng 25.800 đơn và 109.000 sản phẩm với do
         \label{fig:three_charts}
     \end{minipage}
 \end{center}
-→ Đề xuất giải pháp:\\
-\textbf{1. Thu thập data wrong/_size feedback} \\
-Chi phí: gần như 0 (thêm câu hỏi vào flow hoàn hàng) \\
-Tác động trực tiếp: không giảm return ngay, nhưng mở khóa toàn bộ Diagnostic → là tiền đề cho mọi giải pháp tiếp theo\\
-Dự kiến tác động: có kết quả sau 1–2 tháng thu thập \\
-\textbf{2. Cải thiện sizing experience, ưu tiên streetwear vì đây là mặt hàng gây tổn thất lớn} \\
-Cơ sở: wrong size ~35/% của 650M tổn thất = ~227M liên quan wrong_size \\ 
-Tác động trực tiếp: Mỗi 10/% giảm wrong size = tiết kiệm ~23M - mức giảm thực tế dựa vào nguyên nhân gốc rễ xác định được từ feedback data\\
-Cách triển khai: bảng size chi tiết theo số đo các vòng cụ thể, size guide riêng theo danh mục, có ảnh mẫu mặc với ghi chú chiều cao cân nặng giúp người dùng hình dung rõ nhất về size sản phẩm thay vì chỉ chọn dựa vào ảnh \\
+
+Với tổng thất thoát 650 triệu đồng (4,15\% doanh thu), Streetwear là danh mục bị trả về nhiều nhất khi chiếm tới gần 80\% tổng tổn thất, trong đó size XL bị hoàn lại thường xuyên nhất. Nguyên nhân chủ yếu nằm ở việc sai kích cỡ (chiếm 35\%), xảy ra đồng đều trên mọi khu vực và danh mục với tỷ lệ 1,2–1,3\%. Đây là vấn đề mang tính hệ thống—có thể do bảng quy đổi size chưa chuẩn hoặc thông số sản phẩm chưa khớp—đòi hỏi phải cải thiện trải nghiệm chọn size và phân tích thêm phản hồi khách hàng để khắc phục triệt để.
+
+
+\textbf{Đề xuất giải pháp:}\\
+\textbf{1. Thu thập data wrong_size feedback} \\
+Chi phí gần như 0 (thêm câu hỏi vào flow hoàn hàng) nhưng tác động trực tiếp: không giảm return ngay nhưng rõ được nguyên do khách hàng chọn sai size. Dự kiến tác động: có kết quả sau 1–2 tháng thu thập. \\
+\textbf{2. Cải thiện sizing experience, ưu tiên streetwear vì đây là mặt hàng gây tổn thất lớn}. Tác động trực tiếp: Mỗi 10\% giảm wrong size = tiết kiệm ~23M - mức giảm thực tế dựa vào nguyên nhân gốc rễ xác định được từ feedback data. Cách triển khai: bảng size chi tiết theo số đo các vòng cụ thể, size guide riêng theo danh mục, có ảnh mẫu mặc với ghi chú chiều cao cân nặng giúp người dùng hình dung rõ nhất về size sản phẩm thay vì chỉ chọn dựa vào ảnh \\
 \textbf{3. Đổi size miễn phí hoặc có phí trong giới hạn ngày nhất định từ khi nhận hàng } \\
 Tác động trực tiếp: Không giảm return rate nhưng giữ lại doanh thu và có khả năng giữ chân khách hàng dài hạn 
+\subsection{Phân tích hành vi khách hàng: retention, RFM và rủi ro tăng trưởng dài hạn}
+\begin{center}
+    \begin{minipage}{\linewidth}
+        \centering
+        \begin{subfigure}{0.48\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{figures/Old_new.png}
+            \caption{\scriptsize kh cũ mới}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}{0.48\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{figures/cohort_retention_rate.png}
+            \caption{\scriptsize Retention rate}
+        \end{subfigure}
+        \captionof{figure}{Tỉ lệ khách hàng cũ và mới \\
+        Tỉ lệ giữ chân khách hàng}
+    \end{minipage}
+\end{center}
+\begin{center}
+    \begin{minipage}{\linewidth}
+        \centering
+        \begin{subfigure}{0.48\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{figures/Distribution_by_RFM.png}
+            \caption{\scriptsize kh cũ mới}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}{0.48\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{figures/Revenue_contribution.png}
+            \caption{\scriptsize Retention rate}
+        \end{subfigure}
+        \captionof{figure}{Phân bố khách hàng theo RFM \\
+        Phân bố doanh thu theo RFM}
+    \end{minipage}
+\end{center}
+Từ 2014, lượng khách cũ vượt khách mới nhưng đang giảm dần từ 2019 (34.563 → 23.437 vào 2022). Cohort 2012–2013 có retention cực cao và bền (64,7\% sau 6 năm; 50,8\% sau 5 năm), trong khi từ 2019 trở đi Year-1 retention chỉ còn 6–7\%. Nhóm Loyal (~32.000 khách) đóng góp 50\% doanh thu, Champion (<10.000 khách) đóng góp 30\%, nhưng nhóm Lost đã lên tới ~22.500 người.
+Doanh nghiệp đang sống nhờ tệp khách hàng 2012–2016 trong khi khách mới gần như không quay lại. Nguyên nhân kép: trải nghiệm kém (wrong size) và promo ngắn hạn bào mòn GPM thay vì xây dựng loyalty.
+Nếu không can thiệp, cohort 2022 có thể có Year-1 retention dưới 6\% và tệp repeat customer sẽ tự co lại khi cohort cũ giảm tần suất mua. \\
+\textbf{Đề xuất:} Thiết lập loyalty tier với quyền lợi phi tiền tệ (early access, giao hàng ưu tiên, đổi trả dễ hơn). Chạy win-back campaign riêng cho 22.500 khách Lost — chi phí thấp hơn acquire mới vì đã có data hành vi. Với khách mới, kích hoạt onboarding flow trong 30 ngày đầu (sizing guide, chính sách đổi trả, giới thiệu tier) để ngăn Year-1 retention tiếp tục rơi.
+\subsection{Các chương trình giảm giá đang phá biên lợi nhuận}
+\begin{center}
+    \begin{minipage}{\linewidth}
+        \centering
+        \begin{subfigure}{0.48\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{figures/monthly revenue trend promo.png}
+            \caption{\scriptsize kh cũ mới}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}{0.48\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{figures/Weighted GPM.png}
+            \caption{\scriptsize Retention rate}
+        \end{subfigure}
+        \captionof{figure}{Lợi nhuận theo tháng cho các ngày có giảm giá và không \\ Biên lợi nhuận theo tháng cho các ngày có giảm giá và không
+        }
+    \end{minipage}
+\end{center}
+\begin{center}
+    \begin{minipage}{\linewidth}
+        \centering
+        \begin{subfigure}{0.48\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{figures/campaign_effectiveness.png}
+            \caption{\scriptsize kh cũ mới}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}{0.48\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{figures/campaign_gpm.png}
+            \caption{\scriptsize Retention rate}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}{0.48\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{figures/incremental_profit.png}
+            \caption{\scriptsize Retention rate}
+        \end{subfigure}
+        \captionof{figure}{Tính hiệu quả của các chương trình giảm giá\\
+        Biên lợi nhuận của các chương trình giảm giá \\ Lợi nhuận gia tăng của các chương trình giảm giá
+        }
+    \end{minipage}
+\end{center}
+Nhìn vào toàn bộ dữ liệu 2012–2022, chỉ 5/50 campaigns (10\%) thực sự tạo ra giá trị, trong khi 26 campaigns (52\%) đã tích cực phá hủy margin. Đường non-promo trong biểu đồ GPM tháng gần như nằm ngang ở 20–21\% suốt một thập kỷ — bằng chứng rõ ràng rằng vấn đề đến trực tiếp từ chính sách promo.
+Nguyên nhân có hai cơ chế song song. Cơ chế đầu tiên là discount vượt contribution margin: mỗi đơn hàng trong promo period thực chất đang lỗ, đẩy GPM xuống tới –41\% trong khi baseline ổn định ở 20\%. Cơ chế thứ hai là demand pull-forward: revenue tăng trong promo rồi sụt ngay sau đó — khách mua trước rồi im lặng, không tạo thêm giá trị ròng nào.
+Có hai tín hiệu đáng lo trong tương lai: các đáy GPM âm ngày càng sâu hơn qua từng năm cho thấy chiến lược promo đang xấu đi chứ không tự ổn định, và ngay cả 5 campaigns Effective cũng đang suy giảm 10–15\% mỗi chu kỳ — nếu không thay đổi cách thiết kế, các campaigns tháng 8 tiếp theo có thể hòa vốn vào 2025–2027. \\
+\textbf{Đề xuất:} kiểm soát discount depth để không vượt quá contribution margin của sản phẩm, và thêm điều kiện kích hoạt như bundle hoặc minimum order để lọc bớt pure price-sensitive buyers. Với nhóm Volume-driven, chỉ cần điều chỉnh nhẹ discount depth là có thể chuyển từ hòa vốn sang tạo giá trị thực — đây là cơ hội rõ ràng nhất cho lần thiết kế campaign tiếp theo.
+\subsection{Tính mùa vụ: Tại sao Q2 là đỉnh và Q4 là đáy?}
 
-\subsection{}
+\begin{center}
+    \begin{minipage}{\linewidth}
+        \centering
+        \begin{subfigure}{0.48\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{figures/doanh thu_theo_quy.png}
+            \caption{\scriptsize Doanh thu theo quý}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}{0.48\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{figures/tuongquan_promo_bien_loinhuangop.png}
+            \caption{\scriptsize Tương quan promo và biên lợi nhuận gộp}
+        \end{subfigure}
+        \captionof{figure}{Doanh thu theo quý và tương quan promo--GPM}
+        \label{fig:muavu_doanhthu}
+    \end{minipage}
+\end{center}
+\begin{center}
+    \includegraphics[width=0.8\linewidth]{figures/tansuatmuahang_kh.png}
+    \captionof{figure}{Xu hướng tần suất mua hàng của KH}
+    \label{fig:tansuat_muahang}
+\end{center}
+Tính mùa vụ trong dữ liệu mang tính cấu trúc, không phải ngẫu nhiên: Q2 luôn là đỉnh và Q4 luôn là đáy với tỷ lệ Q2/Q4 dao động 2,02x–2,38x suốt 10 năm.
+Tính mùa vụ trong dữ liệu mang tính cấu trúc, không phải ngẫu nhiên: Q2 luôn là đỉnh và Q4 luôn là đáy với tỷ lệ Q2/Q4 dao động 2,02x–2,38x suốt 10 năm. Nguyên nhân nằm ở tháng 4–5 có nhiều ngày lễ nhất năm (4 ngày/tháng trong tổng số 18 ngày lễ/năm), kết hợp với holiday uplift 1,795x — khiến Q2 trở thành đỉnh tự nhiên mà không cần thêm bất kỳ kích thích nào từ phía doanh nghiệp.Nghịch lý là doanh nghiệp lại đang hành động ngược chiều với seasonality này. Dữ liệu cho thấy chu kỳ 2 năm rõ ràng: năm chẵn promo thấp (30–36\%) thì GPM cao (14–17\%), năm lẻ promo cao (43–46\%) thì GPM thấp (9–12\%). Doanh nghiệp tập trung tăng promo vào Q3–Q4 năm lẻ — đúng lúc demand tự nhiên thấp nhất — nhưng Q4 thấp là bản chất thị trường chứ không phải thiếu khuyến mãi, nên promo không tạo ra cầu mới mà chỉ bào mòn biên, phản ánh qua khoảng cách 34,42 điểm phần trăm giữa GPM có promo (–14,46\%) và không có promo (+19,96\%).Hành vi mua hàng của khách xác nhận thêm điều này: tần suất mua giảm từ 2,0 đơn/khách (2012–2016) xuống 1,5 đơn/khách (2017–2022), với khoảng cách 144 ngày giữa hai lần mua — tương ứng chu kỳ từ Tết đến mùa hè. Khách mua theo mùa nội địa, nên promo Q3–Q4 thực chất là chiết khấu trước cho những người vốn sẽ mua ở giá đầy đủ vào Q2 năm sau — thất thoát margin không thu hồi được.
+
+\textbf{Đề xuất:} Q2 bán giá đầy đủ, đảm bảo tồn kho cho mã hàng bán nhanh để tránh hết hàng giữa đỉnh. Q3 thanh lý có kế hoạch các mã tồn kho cao sau mùa. Q4 không đầu tư khuyến mãi lớn, chuyển ngân sách chuẩn bị tồn kho cho Q1–Q2 năm tiếp theo. Bảo toàn GPM Q2 ở ngưỡng 17–18\% thay vì để chu kỳ năm lẻ kéo xuống dưới 10\% sẽ có tác động đáng kể lên GPM toàn năm rõ rệt. 
+
+\subsection{Kênh bán: Kênh nào thực sự hiệu quả?}
+
+\begin{center}
+    \begin{minipage}{\linewidth}
+        \centering
+        \begin{subfigure}{0.48\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{figures/xuhuong_truycap_website.png}
+            \caption{\scriptsize Xu hướng truy cập website}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}{0.48\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{figures/tuongquan_luongtruycap_dt.png}
+            \caption{\scriptsize Tương quan lượng truy cập và DT}
+        \end{subfigure}
+        \captionof{figure}{Xu hướng truy cập website và tương quan với doanh thu}
+        \label{fig:kenh_truycap}
+    \end{minipage}
+\end{center}
+
+Website ghi nhận 91,45 triệu lượt truy cập tích lũy với bounce rate 0,45\% — người dùng tương tác thật sự, không phải traffic rác. Nhưng tương tác tốt lại đi kèm chuyển đổi ngày càng kém: phiên trung bình ngày tăng 62,6\% từ 18.635 (2013) lên 30.311 (2022), trong khi tỷ lệ chuyển đổi ước tính đi ngược chiều hoàn toàn — từ 1,13\% năm 2013 xuống còn 0,33\% năm 2022, giảm 70,8\%. Cụm 2013–2016 lưu lượng thấp hơn nhưng doanh thu cao hơn; giai đoạn 2019–2022 ngược lại. Nhiều người vào hơn, ít người mua hơn — đây là vấn đề chuyển đổi, không phải vấn đề traffic.
+\begin{center}
+    \begin{minipage}{\linewidth}
+        \centering
+        \begin{subfigure}{0.31\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{figures/chatluong_truycap_theo_nguon.png}
+            \caption{\scriptsize Chất lượng truy cập theo nguồn}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}{0.31\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{figures/tytrong_phien_theo_nguonkenh.png}
+            \caption{\scriptsize Tỷ trọng phiên theo nguồn kênh}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}{0.31\linewidth}
+            \centering
+            \includegraphics[width=\linewidth]{figures/promo_theo_kenhban.png}
+            \caption{\scriptsize Promo theo kênh bán}
+        \end{subfigure}
+        \captionof{figure}{Chất lượng truy cập, tỷ trọng phiên và độ phủ promo theo kênh}
+        \label{fig:kenh_chatluong}
+    \end{minipage}
+\end{center}
+
+Organic search dẫn đầu tổng đơn tuyệt đối (181.495 đơn, 28,1\%), nhưng điểm đáng chú ý hơn là tất cả sáu kênh đều giảm tỷ lệ chuyển đổi theo cùng một chiều — đây là vấn đề của toàn bộ khả năng chuyển đổi, không phải riêng kênh nào. Nguyên nhân có phần đến từ chính chu kỳ promo 2 năm: nó đã tạo ra nhóm người dùng học cách chờ đợi, truy cập thường xuyên để kiểm tra giá nhưng chỉ mua khi có khuyến mãi — kéo tỷ lệ chuyển đổi trung bình xuống trên toàn bộ các kênh. Trong khi đó, doanh nghiệp đang áp dụng chiến lược một mặt bằng cho tất cả: tỷ trọng và độ phủ promo gần đồng đều giữa 6 kênh, dù organic search và social media có đặc điểm người dùng khác nhau rõ ràng và do đó cần cách tiếp cận khác nhau.
+
+\textbf{Đề xuất:} Ưu tiên đầu tư SEO để bảo vệ và tăng thị phần organic search — kênh không tốn chi phí mỗi lượt click và tạo nhiều đơn nhất. Xây dựng chương trình giới thiệu bạn bè với chi phí biến đổi thuần túy, chỉ phát sinh khi có giao dịch thành công. Với 90.246 khách hàng, nếu 5\% giới thiệu thành công một khách mới, doanh nghiệp có thêm khoảng 4.512 khách mới mỗi năm — cao hơn 3,4 lần so với 1.322 khách mới năm 2022.
 
 \section{Mô hình Dự báo Doanh Thu}
 
 \subsection{Đánh giá Hiệu suất Mô hình}
 
-Mô hình kết hợp (Final Blend) đạt hiệu suất dự báo xuất sắc trên tập kiểm thử, giảm gần 80\% sai số so với mô hình cơ sở (Baseline). Với $R^2 = 0.9573$, mô hình giải thích được hơn 95\% sự biến thiên của doanh thu thực tế. Các chỉ số sai số (MAE, RMSE) được kiểm soát ở mức rất thấp cung cấp một công cụ hoạch định ngân sách và chuỗi cung ứng với độ tin cậy cao, giúp doanh nghiệp chủ động giảm thiểu rủi ro tồn kho.
+Mô hình kết hợp (Final Blend) đạt hiệu suất dự báo xuất sắc trên tập kiểm thử, giảm gần 80\% sai số so với mô hình cơ sở (Baseline). Các chỉ số đánh giá mô hình thể hiện đây là một công cụ hoạch định ngân sách và chuỗi cung ứng với độ tin cậy cao, giúp doanh nghiệp chủ động giảm thiểu rủi ro tồn kho.
 
 \begin{center}
 \small
@@ -202,8 +361,8 @@ LightGBM & 757,238 & 659,777 \\
 \end{center}
 \textbf{Kaggle score:} 933412,90305\\
 \textit{
-\textbf{Đối với Doanh thu:} LightGBM /(67.2/%) và XGBoost (32.8/%). Trọng số của N-HiTS tự động bị ép về 0\% do sai số lớn. \\
-\textbf{Đối với COGS:} Thuật toán tối ưu tự động lựa chọn 100/% trọng số cho LightGBM (không sử dụng XGBoost và N-HiTS).
+\textbf{Đối với Doanh thu:} LightGBM (67.2\%) và XGBoost (32.8\%). Trọng số của N-HiTS tự động bị ép về 0\% do sai số lớn. \\
+\textbf{Đối với COGS:} Thuật toán tối ưu tự động lựa chọn 100\% trọng số cho LightGBM (không sử dụng XGBoost và N-HiTS).
 }
 
 \subsection{Thiết kế Hệ thống và Chất lượng Pipeline}
@@ -219,14 +378,14 @@ Toàn bộ quy trình phân tích và huấn luyện tuân thủ tuyệt đối 
 \subsection{SHAP và Feature Importance}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\linewidth]{figures/shap_summary.png}
+    \includegraphics[width=0.5\linewidth]{figures/shap_summary.png}
     \caption{Biểu đồ SHAP Feature Importance cho mô hình Ensemble dự báo Doanh thu.}
     \label{fig:revenue_2022}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\linewidth]{figures/feature_importance.png}
+    \includegraphics[width=0.5\linewidth]{figures/feature_importance.png}
     \caption{Top features theo mean $|\mathrm{SHAP}|$}
     \label{fig:revenue_2022}
 \end{figure}
@@ -234,9 +393,21 @@ Thông qua phân tích SHAP Summary và Feature Importance, mô hình đã chỉ
 \begin{enumerate}[leftmargin=2em]
     \item \textbf{Đà mua sắm ngắn hạn \& Chu kỳ tuần}: Các biến độ trễ gần (\texttt{rev\_lag\_1}, \texttt{cogs\_lag\_1}) và chu kỳ tuần (\texttt{lag\_7, 14, 28}) chi phối mạnh nhất, phản ánh đà chi tiêu tiếp nối của khách hàng từ những ngày trước.
     \item \textbf{Tham chiếu lịch sử (Cùng kỳ năm ngoái)}: Dữ liệu trễ đúng 1 năm (\texttt{cogs\_lag\_365}, \texttt{rev\_lag\_365}) lọt top đầu, đóng vai trò là "mỏ neo" cơ sở để hiệu chỉnh doanh thu năm nay.
-    \item \textbf{Thói quen định kỳ \& Chu kỳ vĩ mô}: Ngày trong tháng (\texttt{dom}) và sóng Fourier (\texttt{fourier\_sin\_p365\_25\_k1}) nắm bắt cực tốt các hành vi lặp lại (như kỳ nhận lương) và dòng chảy mùa vụ tổng thể.
+    \item \textbf{Thói quen định kỳ \& Chu kỳ vĩ mô}: Ngày trong tháng (\texttt{dom}) và sóng Fourier (\texttt{fourier\_sin\_p365\_25\_k1}) nắm bắt cực tốt các hành vi lặp lại (như kỳ nhận lương) và dòng chảy mùa vụ tổng thể.(Hình 11,12 biểu đồ hỗ trợ)
 \end{enumerate}
-Chúng ta có thể nhìn rõ hơn thông qua 2 biểu đồ dưới đây:
+
+\section*{Mã nguồn}
+\url{https://github.com/Jade2612/DATATHON}
+
+\begingroup
+\scriptsize 
+\setlength{\itemsep}{0pt} 
+\nocite{*}
+\bibliographystyle{unsrt} 
+\bibliography{references} 
+\endgroup
+
+\textbf{Biểu đồ hỗ trợ}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\linewidth]{figures/monthly_revenue_and_cogs.png}
@@ -249,17 +420,6 @@ Chúng ta có thể nhìn rõ hơn thông qua 2 biểu đồ dưới đây:
     \caption{So sánh doanh thu hàng tháng giữa các năm}
     \label{fig:revenue_year}
 \end{figure}
-
-\section{Mã nguồn}
-\url{https://github.com/Jade2612/DATATHON}
-
-\begingroup
-\scriptsize 
-\setlength{\itemsep}{0pt} 
-\nocite{*}
-\bibliographystyle{unsrt} 
-\bibliography{references} 
-\endgroup
 
 \end{multicols}
 \end{document}
